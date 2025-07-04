@@ -32,4 +32,18 @@ export class MembersPrismaRepository implements MembersRepository {
             throw new Error('Could not find member by email');
         }
     }
+
+    async findManyByGymId(gymId: string): Promise<Member[]> {
+        try {
+            const members = await prisma.member.findMany({
+                where: {
+                    gymId,
+                },
+            });
+            return members;
+        } catch (error) {
+            console.error('Error finding members by gymId:', error);
+            throw new Error('Could not find members by gymId');
+        }
+    }
 }
