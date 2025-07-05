@@ -30,6 +30,18 @@ model Member {
   updatedAt DateTime @updatedAt @map("updated_at")
   gymId     String   @map("gym_id")
   gym       Gym      @relation(fields: [gymId], references: [id])
-
+  payments  Payment[]
+  
   @@map("members")
+}
+
+
+model Payment {
+  id        String   @id @default(uuid())
+  amount    Float
+  date      DateTime @default(now())
+  memberId  String   @map("member_id")
+  member    Member   @relation(fields: [memberId], references: [id])
+
+  @@map("payments")
 }

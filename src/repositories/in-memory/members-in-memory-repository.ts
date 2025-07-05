@@ -27,4 +27,9 @@ export class MembersInMemoryRepository implements MembersRepository{
         const members = this.members.filter(member => member.gymId === gymId);
         return members;
     }
+
+    async findById(id: string): Promise<Member | null> {
+        const member = this.members.find(member => member.id === id);
+        return member ?? null;
+    }
 }

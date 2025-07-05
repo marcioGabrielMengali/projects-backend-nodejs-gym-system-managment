@@ -46,4 +46,18 @@ export class MembersPrismaRepository implements MembersRepository {
             throw new Error('Could not find members by gymId');
         }
     }
+
+    async findById(id: string): Promise<Member | null> {
+        try {
+            const member = await prisma.member.findUnique({
+                where: {
+                    id,
+                },
+            });
+            return member;
+        } catch (error) {
+            console.error('Error finding member by id:', error);
+            throw new Error('Could not find member by id');
+        }
+    }
 }
