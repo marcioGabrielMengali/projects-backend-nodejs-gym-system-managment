@@ -1,6 +1,7 @@
 import { Payment, Prisma } from 'generated/prisma';
+import { PaymentsRepository } from '../payments-repository';
 
-export class PaymentsInMemoryRepository {
+export class PaymentsInMemoryRepository implements PaymentsRepository {
     public payments: Payment[] = [];
 
     async create(data: Prisma.PaymentUncheckedCreateInput): Promise<Payment> {
@@ -13,5 +14,10 @@ export class PaymentsInMemoryRepository {
 
         this.payments.push(payment);
         return payment;
+    }
+    
+    async findManyByMemberId(memberId: string): Promise<Payment[]> {
+        const payments = this.payments.filter(payment => payment.memberId === memberId);
+        return payments;
     }
 }
