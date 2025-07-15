@@ -1,0 +1,50 @@
+{
+  "name": "projects-backend-gym-system-managment",
+  "version": "1.0.0",
+  "description": "This is a  gym management system that helps manage gyms, members, and their payments. The system allows you to register gyms, add and update member information, and keep track of membership payments.",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsup src --out-dir build",
+    "start:dev": "tsx src/server.ts",
+    "start": "node build/server.js",
+    "lint": "npx eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest --coverage"
+  },
+  "keywords": [
+    "postgres",
+    "docker",
+    "nodejs",
+    "fastify",
+    "vitest",
+    "rest",
+    "api",
+    "backend",
+    "gym",
+    "system",
+    "management"
+  ],
+  "author": "Marcio Gabriel Mengali",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "5.0.2",
+    "@types/node": "24.0.3",
+    "@vitest/coverage-v8": "3.2.4",
+    "eslint": "9.29.0",
+    "globals": "16.2.0",
+    "prisma": "^6.9.0",
+    "tsup": "8.5.0",
+    "tsx": "4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "8.34.1",
+    "vite-tsconfig-paths": "5.1.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.9.0",
+    "bcrypt": "6.0.0",
+    "dotenv": "16.5.0",
+    "fastify": "5.4.0",
+    "zod": "3.25.67"
+  }
+}
