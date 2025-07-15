@@ -1,18 +1,19 @@
 version: '3.8'
 
 services:
-  db:
-    image: bitnami/postgresql:latest
-    env_file:
-      - .env
-    environment:
-      - POSTGRESQL_USERNAME=${POSTGRES_USER}
-      - POSTGRESQL_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRESQL_DATABASE=${POSTGRES_DB}
-    ports:
-      - "5432:5432"
-    volumes:
-      - projects-backend-nodejs-gym-system-managment-db-data:/bitnami/postgresql
+    db:
+        image: bitnami/postgresql:latest
+        container_name: db
+        env_file:
+            - .env
+        environment:
+            - POSTGRESQL_USERNAME=${POSTGRES_USER}
+            - POSTGRESQL_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRESQL_DATABASE=${POSTGRES_DB}
+        ports:
+            - '5432:5432'
+        volumes:
+            - projects-backend-nodejs-gym-system-managment-db-data:/bitnami/postgresql
 
 volumes:
-  projects-backend-nodejs-gym-system-managment-db-data:
+    projects-backend-nodejs-gym-system-managment-db-data:
