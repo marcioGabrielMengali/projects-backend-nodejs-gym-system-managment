@@ -8,14 +8,13 @@ export async function registerMemberController(req: FastifyRequest, res: Fastify
     const registerMemberBodySchema = z.object({
         email: z.string().email(),
         name: z.string(),
-        gymId: z.string().uuid(),
     });
-
+    const gymId = req.user.sub;
     const validatedBody = registerMemberBodySchema.parse(req.body);
     const useCase = makeRegisterMemberUseCase();
 
     try {
-        await useCase.execute(validatedBody);
+        await useCase.execute({ ...validatedBody, gymId });
     } catch (error) {
         if (error instanceof AlreadyExistsError) {
             return res.status(409).send({ message: error.message });
