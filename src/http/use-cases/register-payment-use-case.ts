@@ -1,7 +1,7 @@
 import { MembersRepository } from '@/respositories/members-repository';
 import { PaymentsRepository } from '@/respositories/payments-repository';
 import { Payment, Prisma } from 'generated/prisma';
-import { NotFoundError } from './use-cases/errors/not-found-error';
+import { NotFoundError } from './errors/not-found-error';
 
 interface PaymentsRepositoryUseCaseResponse {
     payment: Payment;

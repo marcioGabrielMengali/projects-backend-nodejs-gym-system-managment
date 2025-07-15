@@ -4,7 +4,7 @@ import { MembersRepository } from '@/respositories/members-repository';
 import { PaymentsRepository } from '@/respositories/payments-repository';
 import { MembersInMemoryRepository } from '@/respositories/in-memory/members-in-memory-repository';
 import { PaymentsInMemoryRepository } from '@/respositories/in-memory/payments-in-memory-repository';
-import { NotFoundError } from './use-cases/errors/not-found-error';
+import { NotFoundError } from './errors/not-found-error';
 
 describe(RegisterPaymentUseCase.name, () => {
     let sut: RegisterPaymentUseCase;
@@ -36,7 +36,7 @@ describe(RegisterPaymentUseCase.name, () => {
             email: 'johnDoe@gmail.com',
             gymId: 'gym-01',
         });
-        const {payment} = await sut.execute({
+        const { payment } = await sut.execute({
             amount: 100,
             memberId: member.id,
         });
