@@ -10,7 +10,7 @@ import { FastifyInstance } from 'fastify';
 export async function appRoutes(app: FastifyInstance) {
     app.post('/gyms', registerGymController);
     app.post('/members', { onRequest: [verifyJwtMiddlware] }, registerMemberController);
-    app.get('/gyms/members', fetchGymMembersController);
+    app.get('/gyms/members', { onRequest: [verifyJwtMiddlware] }, fetchGymMembersController);
     app.post('/members/payments', registerPaymentController);
     app.get('/members/payments', fetchMembersPaymentsController);
     app.post('/login', LoginController);
